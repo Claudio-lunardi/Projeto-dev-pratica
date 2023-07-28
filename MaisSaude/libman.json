@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/"
+    },
+    {
+      "library": "inputmask@4.0.9",
+      "destination": "wwwroot/lib/inputmask/"
+    },
+    {
+      "library": "datatables.net-bs5@1.13.4",
+      "destination": "wwwroot/lib/datatables.net-bs5/"
+    },
+    {
+      "library": "datatables.net@2.1.1",
+      "destination": "wwwroot/lib/datatables.net/"
+    }
+  ]
+}
