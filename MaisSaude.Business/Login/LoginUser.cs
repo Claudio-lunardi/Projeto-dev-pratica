@@ -109,9 +109,6 @@ namespace MaisSaude.Business.Login
         }
 
 
-
-
-
         #region PRIVATE
 
         private tUser GetUser(int ID)

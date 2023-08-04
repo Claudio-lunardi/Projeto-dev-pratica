@@ -1,4 +1,6 @@
-﻿using MaisSaude.Models.tUser;
+﻿using MaisSaude.Extensoes;
+using MaisSaude.Models;
+using MaisSaude.Models.tUser;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -13,13 +15,15 @@ namespace MaisSaude.Controllers.Area.Login
     {
         private readonly HttpClient _httpClient;
         private readonly IOptions<DadosBase> _DadosBase;
+        private readonly IApiToken _IApiToken;
 
-        public LoginController(IHttpClientFactory Client, IHttpContextAccessor cookies, IOptions<DadosBase> dadosBase)
+        public LoginController(IHttpClientFactory Client, IHttpContextAccessor cookies, IOptions<DadosBase> dadosBase, IApiToken iApiToken)
         {
             _httpClient = Client.CreateClient();
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _DadosBase = dadosBase;
+            _IApiToken = iApiToken;
         }
 
 
@@ -51,6 +55,7 @@ namespace MaisSaude.Controllers.Area.Login
         {
             try
             {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _IApiToken.Obter());
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login/AuthenticarUsuario", loginRequisicao);
                 if (response.IsSuccessStatusCode)
                 {
@@ -110,6 +115,7 @@ namespace MaisSaude.Controllers.Area.Login
             {
                 if (ModelState.IsValid)
                 {
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _IApiToken.Obter());
                     HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login/CreateUser", tUserRetorno);
 
                     if (response.IsSuccessStatusCode)
@@ -142,6 +148,8 @@ namespace MaisSaude.Controllers.Area.Login
         {
 
             var UserID = User.FindFirst("UserID")?.Value;
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _IApiToken.Obter());
             HttpResponseMessage response = await _httpClient.GetAsync($"{_DadosBase.Value.API_URL_BASE}Login/GetUser?UserID={UserID}");
 
             if (response.IsSuccessStatusCode)
@@ -153,6 +161,7 @@ namespace MaisSaude.Controllers.Area.Login
         [HttpPost]
         public async Task<ActionResult> UpdateUser(tUserRetorno tUserRetorno)
         {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _IApiToken.Obter());
             HttpResponseMessage response = await _httpClient.PutAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login/UpdateUser", tUserRetorno);
 
             if (response.IsSuccessStatusCode)

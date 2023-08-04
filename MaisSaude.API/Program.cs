@@ -4,6 +4,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigurarServicos(builder.Configuration);
+builder.Services.ConfigurarJwt();
+builder.Services.ConfigurarSwagger();
+
 
 builder.Services.AddControllers();
 

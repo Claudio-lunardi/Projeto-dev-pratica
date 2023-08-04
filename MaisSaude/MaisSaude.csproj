@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Area\Cliente\" />
     <Folder Include="wwwroot\img\Login\" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace MaisSaude
+﻿namespace MaisSaude.Models
 {
     public class DadosBase
     {

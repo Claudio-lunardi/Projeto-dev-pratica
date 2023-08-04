@@ -1,29 +1,44 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MaisSaude.Extensoes;
+using MaisSaude.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System.Net.Http.Headers;
 
 namespace MaisSaude.Controllers.Area.Operador
 {
-    public class CadastroUserController : Controller
+    public class CadastroClinicaController : Controller
     {
-        // GET: CadastroUserController
+        private readonly HttpClient _httpClient;
+        private readonly IOptions<DadosBase> _DadosBase;
+        private readonly IApiToken _IApiToken;
+
+        public CadastroClinicaController(IHttpClientFactory Client, IHttpContextAccessor cookies, IOptions<DadosBase> dadosBase, IApiToken iApiToken)
+        {
+            _httpClient = Client.CreateClient();
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _DadosBase = dadosBase;
+            _IApiToken = iApiToken;
+        }
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: CadastroUserController/Details/5
+        // GET: CadastroClinicaController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CadastroUserController/Create
+        // GET: CadastroClinicaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CadastroUserController/Create
+        // POST: CadastroClinicaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +53,13 @@ namespace MaisSaude.Controllers.Area.Operador
             }
         }
 
-        // GET: CadastroUserController/Edit/5
+        // GET: CadastroClinicaController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: CadastroUserController/Edit/5
+        // POST: CadastroClinicaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +74,13 @@ namespace MaisSaude.Controllers.Area.Operador
             }
         }
 
-        // GET: CadastroUserController/Delete/5
+        // GET: CadastroClinicaController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: CadastroUserController/Delete/5
+        // POST: CadastroClinicaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

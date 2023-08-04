@@ -5,6 +5,7 @@ namespace MaisSaude.Models.tUser
 {
     public class tUser 
     {
+        #region Tabela
         [Key]
         public int ID { get; set; }
 
@@ -25,10 +26,17 @@ namespace MaisSaude.Models.tUser
         public string Senha { get; set; } = string.Empty;
 
         public int RoleID { get; set; }
-
+       
         [Required(ErrorMessage = "A data de criação é obrigatória.")]
         public DateTime DataCriacao { get; set; }
 
         public bool Ativo { get; set; }
+
+
+        #endregion 
+
+
+
+        public string? Role { get; set; }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using MaisSaude.Business.Login;
 using MaisSaude.Models.tUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaisSaude.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LoginController : ControllerBase
     {
         private readonly ILoginUser _loginUser;

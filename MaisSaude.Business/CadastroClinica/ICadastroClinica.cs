@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaisSaude.Business.Agendamento
+namespace MaisSaude.Business.CadastroClinica
 {
-    public interface IAgendamento
+    public interface ICadastroClinica
     {
-
     }
 }

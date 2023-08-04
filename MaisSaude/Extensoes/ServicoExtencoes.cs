@@ -1,4 +1,5 @@
-﻿using MaisSaude.Common;
+﻿using MaisSaude.ApiToken.Models;
+using MaisSaude.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MaisSaude.Extensoes
@@ -9,6 +10,15 @@ namespace MaisSaude.Extensoes
         {
             services.Configure<DadosBase>(configuration.GetSection("DadosBase"));
         }
+
+        public static void ConfigurarServicos(this IServiceCollection services)
+        {
+            services.AddScoped<IApiToken, ApiToken>();
+            services.AddSingleton<LoginRespostaModel>();
+            services.AddHttpClient();
+        }
+
+
 
         public static void ConfigurarCookiePolicy(this IServiceCollection services)
         {
