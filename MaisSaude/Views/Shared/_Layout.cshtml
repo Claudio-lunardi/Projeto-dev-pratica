@@ -23,20 +23,54 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-
-
-
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
 
                             <li class="nav-item ">
-                                <a class="nav-link text-white" asp-area="" asp-controller="CadastroTitular" asp-action="Index">Titulares</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Titular" asp-action="Index">Agendamento</a>
                             </li>
                         </ul>
 
 
+                        @if (User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).FirstOrDefault() == "2")
+                        {
+
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                    <font color="white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                        </svg>  Cadastro
+                                    </font>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Titular" asp-action="Index">
+                                            Titular
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Dependente" asp-action="Index">
+                                            Dependente
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Medico" asp-action="Index">
+                                            Médico
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Clinica" asp-action="Index">
+                                            Clinica
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
                         <ul class="navbar-nav flex-grow- justify-content-end">
                             <li class="nav-item text-center">
 
@@ -49,26 +83,19 @@
                                     <ul id="MenuUser" class="dropdown-menu dropdown-menu-lg-end">
                                         <a asp-area="" asp-controller="Login" asp-action="UpdateUser" class="dropdown-item btn-sm">Editar dados cadastrais</a>
                                     </ul>
-
                                 </div>
-
                             </li>
                         </ul>
-
-
                     </div>
                 </div>
             </nav>
         }
     </header>
-
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - MaisSaude - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -81,30 +108,21 @@
     <script src="~/js/global.js" asp-append-version="true"></script>
     <script src="~/lib/datatables.net/jquery.datatables.min.js"></script>
     <script src="~/lib/datatables.net-bs5/datatables.bootstrap5.min.js"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
 <script>
-
     $(function () {
-
-
         if (document.getElementById('Sair')) {
             document.getElementById('Sair').addEventListener('click', function () {
                 window.location.href = '@Url.Action("Login","Login")';
             })
         }
-
         if ("@TempData["sucesso"]")
             toastr.success("@TempData["sucesso"]");
-
         if ("@TempData["erro"]")
             toastr.error("@TempData["erro"]");
-
         if ("@TempData["warning"]")
             toastr.warning("@TempData["warning"]");
-
     });
-
 </script>

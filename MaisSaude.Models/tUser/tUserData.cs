@@ -11,8 +11,8 @@ namespace MaisSaude.Models.tUser
         [Key]
         public int UserID { get; set; }
 
-        public string? CPF { get; set; } = string.Empty;
-        public string? CNPJ { get; set; } = string.Empty;
+        [Required(ErrorMessage = "CPF é obrigatório.")]
+        public string CPF { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O telefone é obrigatório.")]
         [Phone(ErrorMessage = "O número de telefone não é válido.")]

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using MaisSaude.Common.Connections;
 using MaisSaude.Models.tUser;
+using MaisSaude.Models.tUser.tTitular;
 using Microsoft.Extensions.Options;
 using System.Data.SqlClient;
 
@@ -23,7 +24,6 @@ namespace MaisSaude.Business.CadastroUser
                 {
                     string sql = @"SELECT tUser.[ID]
                                        ,tUser.[Nome]
-                                       ,tUser.[Usuario]
                                        ,tUser.[Email]
                                        ,tUser.[Senha]
                                        ,tRole.[Role]
@@ -42,12 +42,12 @@ namespace MaisSaude.Business.CadastroUser
             }
         }
 
-        public async Task<bool> InsertTitular(tUserRetorno tUserRetorno)
+        public async Task<bool> InsertTitular(tTitularRetorno tTitularRetorno)
         {
             try
             {
-                InsertTabelaTitular(tUserRetorno);
-                UpdateRole(tUserRetorno);
+                InsertTabelaTitular(tTitularRetorno);
+                UpdateRole(tTitularRetorno);
                 return true;
             }
             catch (Exception)
@@ -57,10 +57,8 @@ namespace MaisSaude.Business.CadastroUser
         }
 
 
-        private bool InsertTabelaTitular(tUserRetorno tUserRetorno)
+        private bool InsertTabelaTitular(tTitularRetorno tTitularRetorno)
         {
-
-            tUserRetorno.tTitular.Identificacao = Guid.NewGuid();
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
             {
                 string sql = @"INSERT INTO [dbo].[Titular]
@@ -69,12 +67,12 @@ namespace MaisSaude.Business.CadastroUser
                                                VALUES
                                                      (@UserID
                                                      ,@Identificacao)";
-                connection.ExecuteScalar(sql, tUserRetorno.tTitular);
+                connection.ExecuteScalar(sql, tTitularRetorno.tTitular);
                 return true;
             }
         }
 
-        private bool UpdateRole(tUserRetorno tUserRetorno)
+        private bool UpdateRole(tTitularRetorno tTitularRetorno)
         {
 
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
@@ -82,7 +80,7 @@ namespace MaisSaude.Business.CadastroUser
                 string sql = @"UPDATE [dbo].[tUser]
                                        SET [RoleID] = @RoleID
                                      WHERE ID = @ID";
-                connection.ExecuteScalar(sql, tUserRetorno.tUser);
+                connection.ExecuteScalar(sql, tTitularRetorno.tUser);
                 return true;
             }
 

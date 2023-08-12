@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisSaude.Business", "MaisS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisSaude.Infra", "MaisSaude.Infra\MaisSaude.Infra.csproj", "{640A17D2-E476-4B6B-9003-67EAD14D257F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisSaude.Common", "MaisSaude.Common\MaisSaude.Common.csproj", "{BBD579A5-23F5-43B5-AF1A-914173E189CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisSaude.Common", "MaisSaude.Common\MaisSaude.Common.csproj", "{BBD579A5-23F5-43B5-AF1A-914173E189CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisSaude.Email", "MaisSaude.Email\MaisSaude.Email.csproj", "{0F7276C3-8BCC-44BF-A1CE-2146C30A3634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{BBD579A5-23F5-43B5-AF1A-914173E189CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBD579A5-23F5-43B5-AF1A-914173E189CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBD579A5-23F5-43B5-AF1A-914173E189CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7276C3-8BCC-44BF-A1CE-2146C30A3634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7276C3-8BCC-44BF-A1CE-2146C30A3634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7276C3-8BCC-44BF-A1CE-2146C30A3634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7276C3-8BCC-44BF-A1CE-2146C30A3634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

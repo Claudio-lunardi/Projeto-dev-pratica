@@ -11,8 +11,9 @@ namespace MaisSaude.Common
         Administrador = 1,
         Tiular = 2,
         Dependente = 3,
-        Medico = 4,
-        Clinica = 5,
+        Clinica = 4,
+        Medico = 5,
+      
     }
 
 }

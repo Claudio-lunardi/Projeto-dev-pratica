@@ -1,11 +1,11 @@
 ﻿
 $(document).ready(function () {
 
-    $('.maskCelular').inputmask({ mask: ['(99) 99999-9999'] });
-    $('.maskTelefone').inputmask({ mask: ['(99) 9999-9999'] });
-    $('.maskCPF').inputmask({ mask: ['999.999.999-99'] });
+    $('.maskCelular').inputmask({ mask: ['(99) 99999-9999'], clearIncomplete: true });
+    $('.maskTelefone').inputmask({ mask: ['(99) 9999-9999'], clearIncomplete: true });
+    $('.maskCPF').inputmask({ mask: ['999.999.999-99'], clearIncomplete: true });
 
-    $('.maskCEP').inputmask({ mask: ['99999-999'] });
+    $('.maskCEP').inputmask({ mask: ['99999-999'], clearIncomplete: true });
 
     $('#myTable').DataTable({
         "language": {

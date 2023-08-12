@@ -1,6 +1,7 @@
 ﻿using MaisSaude.Extensoes;
 using MaisSaude.Models;
 using MaisSaude.Models.tUser;
+using MaisSaude.Models.tUser.tTitular;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -97,7 +98,7 @@ namespace MaisSaude.Controllers.Area.Login
             else
                 TempData["erro"] = mensagem;
 
-            tUserRetorno tUserRetorno = new tUserRetorno()
+            tUserRetorno tTitularRetorno = new tUserRetorno()
             {
                 tUser = new tUser()
                 {
@@ -105,18 +106,18 @@ namespace MaisSaude.Controllers.Area.Login
                     Ativo = true
                 }
             };
-            return View(tUserRetorno);
+            return View(tTitularRetorno);
         }
 
         [HttpPost]
-        public async Task<ActionResult> PrimeiroAcesso(tUserRetorno tUserRetorno)
+        public async Task<ActionResult> PrimeiroAcesso(tTitularRetorno tTitularRetorno)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _IApiToken.Obter());
-                    HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login/CreateUser", tUserRetorno);
+                    HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login/CreateUser", tTitularRetorno);
 
                     if (response.IsSuccessStatusCode)
                         return RedirectToAction("Login", "Login", new { mensagem = "Usuário criado com sucesso!", sucesso = true });

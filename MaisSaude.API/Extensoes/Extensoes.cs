@@ -5,9 +5,12 @@ using MaisSaude.Business.CadastroMedico;
 using MaisSaude.Business.CadastroTitular;
 using MaisSaude.Business.CadastroUser;
 using MaisSaude.Business.Login;
+using MaisSaude.Business.Rabbit;
 using MaisSaude.Business.Users;
+using MaisSaude.Business.Validações;
 using MaisSaude.Common;
 using MaisSaude.Common.Connections;
+using MaisSaude.Infra.RabbitMQ;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -30,6 +33,15 @@ namespace MaisSaude.API.Extensoes
             services.AddScoped<ICadastroDependente, CadastroDependente>();
             services.AddScoped<ICadastroMedico, CadastroMedico>();
             services.AddScoped<ICadastroTitular, CadastroTitular>();
+            services.AddScoped<IValidacao, Validacao>();
+
+            #region RabbitMQ
+            services.Configure<DadosBaseRabbitMQ>(configuration.GetSection("DadosBaseRabbitMQ"));
+            services.AddScoped<IMensageria, Mensageria>();
+            services.AddSingleton<RabbitMQFactory>();
+            #endregion
+
+
         }
 
         public static void ConfigurarSwagger(this IServiceCollection services) =>

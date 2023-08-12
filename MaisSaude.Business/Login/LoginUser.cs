@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using MaisSaude.Business.Users;
 using MaisSaude.Common;
 using MaisSaude.Common.Connections;
 using MaisSaude.Models.tUser;
@@ -53,8 +54,10 @@ namespace MaisSaude.Business.Login
                 //criptografando a senha do usuário usando método de extensão
                 tUserRetorno.tUser.Senha = tUserRetorno.tUser.Senha.GerarHash();
 
-
                 tUserRetorno.tUserData.UserID = _IDbtUser.Insertuser(tUserRetorno.tUser);
+
+                CreateTitular(tUserRetorno.tUserData.UserID);
+
                 _IDbtUser.InsertUserData(tUserRetorno.tUserData);
 
                 return true;
@@ -90,6 +93,30 @@ namespace MaisSaude.Business.Login
 
         }
 
+        private void CreateTitular(int UserID)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
+                {
+                    string sql = @"INSERT INTO [dbo].[Titular]
+                                               ([UserID])
+                                         VALUES
+                                               (@UserID)";
+
+                    connection.Execute(sql, param: new { UserID });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+
         public async Task<bool> UpdateUser(tUserRetorno tUserRetorno)
         {
             try
@@ -120,7 +147,6 @@ namespace MaisSaude.Business.Login
                 return tUser;
             }
         }
-
         private tUserData GetUserData(int ID)
         {
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
@@ -139,7 +165,6 @@ namespace MaisSaude.Business.Login
             {
                 string sql = @"UPDATE [dbo].[tUser]
                                         SET [Nome] = @Nome,
-                                            [Usuario] = @Usuario,
                                             [Email] = @Email,
                                             [Senha] = @Senha,
                                             [Ativo] = @Ativo

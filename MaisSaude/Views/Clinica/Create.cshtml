@@ -1,0 +1,176 @@
+﻿@model MaisSaude.Models.tUser.tClinica.tClinicaRetorno
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row justify-content-center ">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="tUser.DataCriacao" class="form-control" type="hidden" />
+                        <input class="form-check-input" asp-for="tUser.Ativo" type="hidden" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label asp-for="tUser.Nome" class="control-label"></label>
+                                    <input asp-for="tUser.Nome" class="form-control" placeholder="João..." />
+                                    <span asp-validation-for="tUser.Nome" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label asp-for="tUser.Email" class="control-label"></label>
+                                    <input type="email" asp-for="tUser.Email" class="form-control" />
+                                    <span asp-validation-for="tUser.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label asp-for="tUserData.CPF" class="control-label"></label>
+                                    <input asp-for="tUserData.CPF" class="form-control maskCPF" />
+                                    <span asp-validation-for="tUserData.CPF" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tUser.Senha" class="control-label"></label>
+                                    <input id="senha1" asp-for="tUser.Senha" type="password" class="form-control" />
+                                    <span id="senhaError" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tUser.Senha" class="control-label"></label>
+                                    <input id="senha2" type="password" asp-for="tUser.Senha" class="form-control" />
+                                    <span asp-validation-for="tUser.Senha" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tUserData.Telefone" class="control-label"></label>
+                                    <input asp-for="tUserData.Telefone" class="form-control maskTelefone" placeholder="(__) ____-____" />
+                                    <span asp-validation-for="tUserData.Telefone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tUserData.Celular" class="control-label"></label>
+                                    <input asp-for="tUserData.Celular" class="form-control maskCelular" placeholder="(__) _____-____" />
+                                    <span asp-validation-for="tUserData.Celular" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.CEP" class="control-label"></label>
+                            <input id="CEP" asp-for="tUserData.CEP" class="form-control maskCEP" placeholder="_____-___ " />
+                            <span asp-validation-for="tUserData.CEP" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.Cidade" class="control-label"></label>
+                            <input id="Cidade" asp-for="tUserData.Cidade" class="form-control" readonly />
+                            <span asp-validation-for="tUserData.Cidade" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="tUserData.Bairro" class="control-label"></label>
+                            <input id="Bairro" asp-for="tUserData.Bairro" class="form-control" readonly />
+                            <span asp-validation-for="tUserData.Bairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.Logradouro" class="control-label"></label>
+                            <input id="logradouro" asp-for="tUserData.Logradouro" class="form-control" readonly />
+                            <span asp-validation-for="tUserData.Logradouro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.UF" class="control-label"></label>
+                            <input id="UF" asp-for="tUserData.UF" class="form-control" readonly />
+                            <span asp-validation-for="tUserData.UF" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.Numero" class="control-label"></label>
+                            <input asp-for="tUserData.Numero" class="form-control" />
+                            <span asp-validation-for="tUserData.Numero" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="tUserData.Complemento" class="control-label"></label>
+                            <input asp-for="tUserData.Complemento" class="form-control" />
+                            <span asp-validation-for="tUserData.Complemento" class="text-danger"></span>
+                        </div>
+                        <div class="card-footer mt-4">
+                            <div class="text-center mt-2">
+                                <div class="row">
+                                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    document.getElementById('senha2').addEventListener('input', function () {
+
+        var senha1 = document.getElementById("senha1").value;
+        var senha2 = document.getElementById("senha2").value;
+        var mensagem = document.getElementById("senhaError");
+
+        if (senha1 === senha2 && senha1.length >= 12) {
+            mensagem.style.display = "none";
+        } else {
+            mensagem.textContent = "As senhas não são iguais ou não possuem pelo menos 12 caracteres.";
+            mensagem.style.display = "block";
+        }
+
+
+    });
+
+
+
+
+    document.body.classList.add('login');
+
+    $("#CEP").on('blur', function (e) {
+
+        var cep = $(this).val().replace(/[^0-9]/, '')
+        if (cep != "") {
+            $.ajax({
+                type: "GET",
+                url: "https://viacep.com.br/ws/" + cep + "/json/",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (dados) {
+                    $("#CEP").val(dados.cep);
+                    $("#Cidade").val(dados.localidade);
+                    $("#Bairro").val(dados.bairro);
+                    $("#logradouro").val(dados.logradouro);
+                    $("#UF").val(dados.uf);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert("CEP inválido!")
+                }
+
+            });
+        }
+
+    });
+
+</script>

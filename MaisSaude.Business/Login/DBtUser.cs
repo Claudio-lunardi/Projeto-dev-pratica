@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using MaisSaude.Common;
 using MaisSaude.Common.Connections;
 using MaisSaude.Models.tUser;
 using Microsoft.Extensions.Options;
@@ -17,27 +18,39 @@ namespace MaisSaude.Business.Login
 
         public int Insertuser(tUser tUser)
         {
-            using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
+            try
             {
-                string sql = @"INSERT INTO [dbo].[tUser]
+                tUser.DataCriacao = DateTime.Now;
+                tUser.RoleID = (int)Role.Tiular;
+
+                using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
+                {
+                    string sql = @"INSERT INTO [dbo].[tUser]
                                                        ([Nome]
-                                                       ,[Usuario]
                                                        ,[Email]
                                                        ,[Senha]
                                                        ,[DataCriacao]
+                                                       ,RoleID
                                                        ,[Ativo])
                                                  VALUES
                                                        (@Nome
-                                                       ,@Usuario
                                                        ,@Email
                                                        ,@Senha
                                                        ,@DataCriacao
+                                                       ,@RoleID
                                                        ,@Ativo);
                                                         SELECT SCOPE_IDENTITY();";
 
-                int UserID = connection.ExecuteScalar<int>(sql, param: tUser);
-                return UserID;
+                    int UserID = connection.ExecuteScalar<int>(sql, param: tUser);
+                    return UserID;
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         public int InsertUserData(tUserData tUserData)
@@ -47,7 +60,6 @@ namespace MaisSaude.Business.Login
                 string sql = @"INSERT INTO [dbo].[tUserData]
                                                        ([UserID]
                                                        ,[CPF]
-                                                       ,[CNPJ]
                                                        ,[Telefone]
                                                        ,[Celular]
                                                        ,[CEP]
@@ -60,7 +72,6 @@ namespace MaisSaude.Business.Login
                                                  VALUES
                                                        (@UserID
                                                        ,@CPF
-                                                       ,@CNPJ
                                                        ,@Telefone
                                                        ,@Celular
                                                        ,@CEP

@@ -29,7 +29,7 @@ namespace MaisSaude.Extensoes
             loginRequisicaoModel.Usuario = "UsuarioDevPratica";
             loginRequisicaoModel.Senha = "SenhaDevPratica";
 
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}Login", loginRequisicaoModel);
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync($"{_DadosBase.Value.API_URL_BASE}LoginApi", loginRequisicaoModel);
 
             if (response.IsSuccessStatusCode)
             {
