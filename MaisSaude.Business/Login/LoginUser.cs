@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using MaisSaude.Business.Users;
 using MaisSaude.Common;
 using MaisSaude.Common.Connections;
 using MaisSaude.Models.tUser;

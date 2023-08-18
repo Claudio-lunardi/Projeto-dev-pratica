@@ -12,7 +12,9 @@
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input asp-for="tUser.DataCriacao" class="form-control" type="hidden" />
-                        <input class="form-check-input" asp-for="tUser.Ativo" type="hidden" />
+                        <input class="form-check-input" asp-for="tUser.Ativo" type="hidden"/>
+                        <input id="senha1" type="password" asp-for="tUser.Senha" type="hidden" class="form-control" value="____________" />
+                        <input id="senha2" type="password" asp-for="tUser.Senha" type="hidden" class="form-control" value="____________" />
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
@@ -80,24 +82,6 @@
                             </div>
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="tUser.Senha" class="control-label"></label>
-                                    <input id="senha1" asp-for="tUser.Senha" type="password" class="form-control" />
-                                    <span id="senhaError" class="text-danger"></span>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="tUser.Senha" class="control-label"></label>
-                                    <input id="senha2" type="password" asp-for="tUser.Senha" class="form-control" />
-                                    <span asp-validation-for="tUser.Senha" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
                         <hr class="mt-5 mb-5" />
                         <div class="row">
                             <div class="col-md-6">

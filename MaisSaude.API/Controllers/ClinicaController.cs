@@ -23,7 +23,7 @@ namespace MaisSaude.API.Controllers
         [SwaggerOperation(Summary = "Obtem todas as clinicas.", Description = "Obtem todas as clinicas.")]
         public async Task<ActionResult> GetClinicas()
         {
-            var result =  _CadastroClinica.GetClinicas();
+            var result = _CadastroClinica.GetClinicas();
             return Ok(result);
         }
         [HttpGet("GetClinica")]

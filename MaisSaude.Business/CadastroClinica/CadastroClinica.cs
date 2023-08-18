@@ -145,13 +145,11 @@ namespace MaisSaude.Business.CadastroClinica
         }
         private void UpdatetUser(tUser tUser)
         {
-            tUser.Senha = tUser.Senha.GerarHash();
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
             {
                 string sql = @"UPDATE [dbo].[tUser]
                                         SET [Nome] = @Nome,
                                             [Email] = @Email,
-                                            [Senha] = @Senha,
                                             [Ativo] = @Ativo
                                       WHERE ID = @ID";
                 connection.ExecuteScalar(sql, tUser);

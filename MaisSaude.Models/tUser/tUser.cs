@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MaisSaude.Models.tUser
 {
-    public class tUser 
+    public class tUser
     {
         #region Tabela
         [Key]
@@ -11,18 +10,18 @@ namespace MaisSaude.Models.tUser
 
         [Required(ErrorMessage = "O nome é obrigatório.")]
         [StringLength(100, ErrorMessage = "O nome não pode ter mais de 100 caracteres.")]
-        public string Nome { get; set; } = string.Empty;
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "O email é obrigatório.")]
         [EmailAddress(ErrorMessage = "O email não é válido.")]
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória.")]
         [StringLength(12, MinimumLength = 12)]
-        public string Senha { get; set; } 
+        public string Senha { get; set; }
 
         public int RoleID { get; set; }
-       
+
         [Required(ErrorMessage = "A data de criação é obrigatória.")]
         public DateTime DataCriacao { get; set; }
 

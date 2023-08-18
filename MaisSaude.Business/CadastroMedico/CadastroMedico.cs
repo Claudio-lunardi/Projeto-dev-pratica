@@ -3,14 +3,8 @@ using MaisSaude.Common;
 using MaisSaude.Common.Connections;
 using MaisSaude.Models.tUser;
 using MaisSaude.Models.tUser.tMedico;
-using MaisSaude.Models.tUser.tTitular;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MaisSaude.Business.CadastroMedico
 {
@@ -78,7 +72,8 @@ namespace MaisSaude.Business.CadastroMedico
                                                     ,@ClinicaID)";
 
                     connection.Execute(sql, param:
-                        new {
+                        new
+                        {
                             UserID = tMedicoRetorno.tUserData.UserID,
                             Especialidade = tMedicoRetorno.tMedico.Especialidade,
                             ClinicaID = tMedicoRetorno.tMedico.ClinicaID

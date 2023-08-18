@@ -127,7 +127,6 @@ namespace MaisSaude.Business.CadastroTitular
                 string sql = @"UPDATE [dbo].[tUser]
                                         SET [Nome] = @Nome,
                                             [Email] = @Email,
-                                            [Senha] = @Senha,
                                             [Ativo] = @Ativo
                                       WHERE ID = @ID";
                 connection.ExecuteScalar(sql, tUser);

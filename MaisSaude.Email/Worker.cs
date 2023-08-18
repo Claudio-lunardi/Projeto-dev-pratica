@@ -1,10 +1,10 @@
+using MaisSaude.Common.Connections;
 using MaisSaude.Infra.RabbitMQ;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
-using MaisSaude.Common.Connections;
 
 namespace MaisSaude.Email
 {

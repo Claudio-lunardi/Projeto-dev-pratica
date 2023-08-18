@@ -15,6 +15,8 @@
                         <input asp-for="tUserData.ID" class="form-control" type="hidden" />
                         <input asp-for="tUser.DataCriacao" class="form-control" type="hidden" />
                         <input asp-for="tUserData.DateUpdate" class="form-control" type="hidden" />
+                        <input id="senha1" type="password" asp-for="tUser.Senha" type="hidden" class="form-control" value="____________" />
+                        <input id="senha2" type="password" asp-for="tUser.Senha" type="hidden" class="form-control" value="____________" />
                         <input class="form-check-input" asp-for="tUser.Ativo" type="hidden" />
 
                         <div class="row">
@@ -51,24 +53,6 @@
                                     <option value="" disabled selected>Selecione um titular</option>
                                 </select>
                                 <span asp-validation-for="tTitular.ID" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="tUser.Senha" class="control-label"></label>
-                                    <input id="senha1" type="password" asp-for="tUser.Senha" class="form-control" />
-                                    <span asp-validation-for="tUser.Senha" class="text-danger"></span>
-                                    <span id="senhaError" class="text-danger"></span>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="tUser.Senha" class="control-label"></label>
-                                    <input id="senha2" type="password" asp-for="tUser.Senha" class="form-control" />
-                                    <span asp-validation-for="tUser.Senha" class="text-danger"></span>
-                                </div>
                             </div>
                         </div>
 

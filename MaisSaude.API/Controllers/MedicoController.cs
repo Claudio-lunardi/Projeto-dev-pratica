@@ -24,7 +24,7 @@ namespace MaisSaude.API.Controllers
         public async Task<ActionResult> GetMedicos()
         {
 
-           
+
             var result = _cadastroMedico.GetMedicos();
             return Ok(result);
         }

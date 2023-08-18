@@ -2,9 +2,6 @@
 using MaisSaude.Models;
 using MaisSaude.Models.tUser;
 using MaisSaude.Models.tUser.tMedico;
-using MaisSaude.Models.tUser.tTitular;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;

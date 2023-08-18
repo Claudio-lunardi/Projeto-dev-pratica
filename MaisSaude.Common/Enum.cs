@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MaisSaude.Common
-{  
+﻿namespace MaisSaude.Common
+{
     public enum Role
     {
         Administrador = 1,
@@ -13,7 +7,7 @@ namespace MaisSaude.Common
         Dependente = 3,
         Clinica = 4,
         Medico = 5,
-      
+
     }
 
 }

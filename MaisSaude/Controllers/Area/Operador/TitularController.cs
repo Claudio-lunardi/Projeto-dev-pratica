@@ -1,15 +1,11 @@
-﻿using MaisSaude.Business.Users;
-using MaisSaude.Models.tUser;
+﻿using MaisSaude.Extensoes;
 using MaisSaude.Models;
-using Microsoft.AspNetCore.Http;
+using MaisSaude.Models.tUser;
+using MaisSaude.Models.tUser.tTitular;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-using System.Net.Http;
-using MaisSaude.Extensoes;
-using Microsoft.Extensions.Options;
-using MaisSaude.Models.tUser.tTitular;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MaisSaude.Controllers.Area.Operador
 {
@@ -31,7 +27,6 @@ namespace MaisSaude.Controllers.Area.Operador
 
         public async Task<ActionResult> Index(string mensagem = null, bool sucesso = true)
         {
-
             try
             {
                 if (sucesso)
@@ -148,13 +143,13 @@ namespace MaisSaude.Controllers.Area.Operador
             }
         }
 
-        // GET: TitularController/Delete/5
+
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: TitularController/Delete/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

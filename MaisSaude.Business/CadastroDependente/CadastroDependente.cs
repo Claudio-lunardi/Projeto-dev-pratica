@@ -48,7 +48,7 @@ namespace MaisSaude.Business.CadastroDependente
                 CreateDependente(tDependenteRetorno);
                 InsertUserData(tDependenteRetorno.tUserData);
             }
-        } 
+        }
         public tDependenteRetorno GetDependente(int ID)
         {
             try
@@ -74,9 +74,9 @@ namespace MaisSaude.Business.CadastroDependente
         }
 
 
-   
 
-        private void CreateDependente(tDependenteRetorno tDependenteRetorno) 
+
+        private void CreateDependente(tDependenteRetorno tDependenteRetorno)
         {
             try
             {
@@ -89,8 +89,8 @@ namespace MaisSaude.Business.CadastroDependente
                                                    (@TitularID
                                                    ,@UserID)";
 
-                    connection.Execute(sql, param: new { TitularID = tDependenteRetorno.tTitular.ID, UserID = tDependenteRetorno.tUserData.UserID }) ;
-                  
+                    connection.Execute(sql, param: new { TitularID = tDependenteRetorno.tTitular.ID, UserID = tDependenteRetorno.tUserData.UserID });
+
                 }
             }
             catch (Exception ex)
@@ -138,13 +138,11 @@ namespace MaisSaude.Business.CadastroDependente
         }
         private void UpdatetUser(tUser tUser)
         {
-            tUser.Senha = tUser.Senha.GerarHash();
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
             {
                 string sql = @"UPDATE [dbo].[tUser]
                                         SET [Nome] = @Nome,
                                             [Email] = @Email,
-                                            [Senha] = @Senha,
                                             [Ativo] = @Ativo
                                       WHERE ID = @ID";
                 connection.ExecuteScalar(sql, tUser);
@@ -214,7 +212,8 @@ namespace MaisSaude.Business.CadastroDependente
         }
 
 
-        private tTitular GetTitular1(int UserID) {
+        private tTitular GetTitular1(int UserID)
+        {
 
             using (var connection = new SqlConnection(_DefaultConnection.Value.DefaultConnection))
             {
